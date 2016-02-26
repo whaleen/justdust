@@ -2,7 +2,7 @@
 .sass-cache/
 _sass
 .jekyll-metadata
-
+.DS_Store
 
 
 # Ignoring everything but _site for Jekyll stuff because Github said it doesn't want to build with my fancy plugin ok ok ok
