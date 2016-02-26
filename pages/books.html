@@ -1,0 +1,29 @@
+---
+layout: page
+title: Books
+permalink: /books/
+---
+
+<div class="container">
+
+  <ul class="list-reset clearfix">
+  {% for book in site.books limit:30 %}
+      <li class="inline-block m3 col col-2 bg-cover bg-center center">
+        <a class="h3 black" href="{{ book.url }}">{{ book.title }}</a>
+        <img src="{{ book.image }}" alt="{{ book.title }}"/>
+        <a href="/author/{{ book.author }}">About Author</a>
+
+        <button class="snipcart-add-item btn btn-primary"
+          data-item-name="{{book.title}}"
+          data-item-id="{{book.sku}}"
+          data-item-image="{{book.image}}"
+          data-item-url="{{book.url}}"
+          data-item-price="{{book.price}}">
+          Buy it for ${{book.price}}
+        </button>
+
+      </li>
+  {% endfor %}
+  </ul>
+
+</div>
