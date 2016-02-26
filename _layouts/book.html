@@ -31,17 +31,21 @@ layout: default
     <!-- This funny business will only work due to
     collections_filter.rb plugin in _plugins dir
     See comments in plugin. It's actually quite usefull.
-    Github pages can't use it. Build local - push it up... ugh...
+    Github pages can't use it. Build _site local, push it up,.. ugh...
     -->
-    {% assign filtered_books = site.books | collection_filter:"author", page.slug %}
-        {% if filtered_books %}
+
+    <!-- -->
+    {% assign filtered_authors = site.authors | collection_filter:"slug", page.author %}
+
+        <!-- Are there Authors to filter? -->
+        {% if filtered_authors %}
         <div>
 
-          <h2 class="georgia h3">Written by {{ page.title }}</h2>
-
-          {% for book in filtered_books %}
-            <article class="book">
-              <a href="{{ site.url }}/book/{{ book.slug }}">{{ book.title }}</a>
+          <!-- All right then: -->
+          <h2 class="georgia h3">Written by {{ author.name }}</h2>
+          {% for author in filtered_authors %}
+            <article class="author">
+              <a href="{{ site.url }}/author/{{ author.slug }}">{{ author.name }}</a>
             </article>
           {% endfor %}
         </div>
