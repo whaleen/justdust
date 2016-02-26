@@ -1,0 +1,63 @@
+---
+layout: default
+title: Home
+---
+<div class="" style="background-color: #fafafa;">
+  <div class="container clearfix p2">
+
+    <div class="col col-10 georgia">
+
+      <p class="h1">A publishing company bringing excellent books to print in traditional, self-publishing, and electronic venues. </p>
+
+      <p class="h2 gray">Mission  "To publish works of redeeming value"</p>
+
+      <p class="col-8">Just Dust Publishers has been publishing books in Oregon since 2011.  We are working with authors as a traditional publisher and providing publishing services with our self-publishing arm of the company, Sage Meadows Press.</p>
+
+    </div>
+
+<!-- Home page feature book  -->
+
+<div class="col col-2">
+  <h1 class="caps h4 silver">Featured Title</h1>
+  <ul class="list-reset clearfix">
+    {% for book in site.books limit:1 author:janet-storton %}
+      <li class="inline-block bg-cover bg-center center">
+        <!-- <a class="h3 black" href="{{ book.url }}">{{ book.title }}</a> -->
+        <img src="{{ book.image }}" alt="{{ book.title }}"/>
+        <!-- <a href="/author/{{ book.author }}">{{ book.author }}</a> -->
+
+        <button class="snipcart-add-item btn btn-primary"
+          data-item-name="{{book.title}}"
+          data-item-id="{{book.sku}}"
+          data-item-image="{{book.image}}"
+          data-item-url="{{book.url}}"
+          data-item-price="{{book.price}}">
+          Buy it for ${{book.price}}
+        </button>
+
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+  </div>
+</div>
+
+
+<div class="container">
+<h1 class=" p2 caps h5 gray">Our Authors</h1>
+  <ul class="list-reset clearfix">
+    {% for author in site.authors %}
+      <li class="inline-block col col-6 sm-col-4 md-col-3 ">
+        <a href="{{ site.url }}/author/{{ author.slug }}">
+        <div class="m2 center py2" style="background-color: #fafafa;">
+          <!-- font wieght not applying to machine fonts???? -->
+          <a href="{{ site.url }}/author/{{ author.slug }}"><h1 class="h4 navy georgia fw100">{{ author.name }}</h1></a>
+          <img src="{{ author.image }}" alt="{{ author.name }}" class="fit circle bg-white p1 animated fadeIn" style="width:70%;"/>
+        </div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+</div>

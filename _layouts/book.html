@@ -1,0 +1,60 @@
+---
+layout: default
+---
+<div class="container clearfix">
+
+  <header class="post-header">
+    <a href="{{ site.url }}/author/{{ page.slug }}"><h1 class="navy georgia fw100">{{ page.name }}</h1></a>
+  </header>
+
+  <div class="col col-6 georgia">
+    <img src="{{ site.url }}{{ page.image }}" alt="{{ page.name }}" class="bg-white p1" style="width:70%;"/>
+  </div>
+  <div class="col col-6">
+    <article class="post-content georgia">
+      <p class="h2">{{ page.summary }}</p>
+      <h1 class="georgia">{{ page.title }}</h1>
+      {{ content }}
+    </article>
+  </div>
+</div>
+
+<hr>
+
+<div class="container clearfix">
+  <div class="col col-4">
+    {{ page.author }}
+  </div>
+  <div class="col col-8">
+
+
+    <!-- This funny business will only work due to
+    collections_filter.rb plugin in _plugins dir
+    See comments in plugin. It's actually quite usefull.
+    Github pages can't use it. Build local - push it up... ugh...
+    -->
+    {% assign filtered_books = site.books | collection_filter:"author", page.slug %}
+        {% if filtered_books %}
+        <div>
+
+          <h2 class="georgia h3">Written by {{ page.title }}</h2>
+
+          {% for book in filtered_books %}
+            <article class="book">
+              <a href="{{ site.url }}/book/{{ book.slug }}">{{ book.title }}</a>
+            </article>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <!-- End funny business -->
+
+  </div>
+</div>
+
+<hr>
+
+<a href="{{ site.url }}/authors">
+  <div class="container clearfix">
+See All Authors
+  </div>
+</a>
