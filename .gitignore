@@ -6,9 +6,10 @@ _sass
 
 
 # Ignoring everything but _site for Jekyll stuff because Github said it doesn't want to build with my fancy plugin ok ok ok
+
 index.html
 feed.xml
-_config.yml
+# _config.yml
 pages
 img
 css
