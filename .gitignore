@@ -2,3 +2,5 @@
 .sass-cache/
 _sass
 .jekyll-metadata
+_plugins
+_hack
